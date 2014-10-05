@@ -1,7 +1,4 @@
-function MarsRover(x, y) {
-    this.x = x;
-    this.y = y;
-    this.getLocation = function() {
-        return [x, y];
-    };
+function MarsRover(x, y, direction) {
+    this.location = [x, y];
+    this.direction = direction;
 }
