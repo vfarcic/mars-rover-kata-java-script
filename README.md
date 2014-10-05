@@ -16,8 +16,3 @@ npm install
 bower install
 ```
 
-Pending
--------
-
-* Check whether object values are correct (x = number, y = number, direction = ['N', 'S', 'E', 'W'])
-
