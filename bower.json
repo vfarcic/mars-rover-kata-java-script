@@ -1,0 +1,11 @@
+{
+    "name": "mars-rover-kata",
+    "private": false,
+    "version": "0.0.1",
+    "description": "Mars Rover kata",
+    "repository": "https://github.com/vfarcic/mars-rover-kata",
+    "license": "Apache License 2",
+    "dependencies": {
+        "jasmine": "2.0.x"
+    }
+}
