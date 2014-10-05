@@ -14,6 +14,10 @@ describe('Mars Rover', function() {
             expect(mr.direction()).toEqual(direction);
         });
 
+        it('location should throw exception when X is not a number', function() {
+            expect(new MarsRover('not_a_number', y, direction).location).toThrow();
+        });
+
     });
 
 });
