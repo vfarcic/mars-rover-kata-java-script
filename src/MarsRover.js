@@ -1,25 +1,9 @@
 function MarsRover(location, direction, grid) {
 
-    if (location === undefined) location = [0, 0];
-    direction = (direction === undefined) ? 0 : directionAsNumber(direction);
-    if (grid === undefined) grid = [100, 100];
-
-    this.location = function() {
-        return location;
-    };
-
-    this.direction = function() {
-        switch(direction) {
-            case 0: return 'N';
-            case 1: return 'E';
-            case 2: return 'S';
-            case 3: return 'W';
-        }
-    };
-
-    this.grid = function() {
-        return grid;
-    };
+    self = this;
+    this.location = (location === undefined) ? [0, 0] : location;
+    this.direction = (direction === undefined) ? 'N' : direction;
+    this.grid = (grid === undefined) ? [100, 100] : grid;
 
     this.commands = function(commands) {
         if (commands === undefined) { // Getter
@@ -39,44 +23,46 @@ function MarsRover(location, direction, grid) {
     };
 
     function resetLocation() {
-        var locationX = (location[0] + grid[0]) % grid[0];
-        var locationY = (location[1] + grid[1]) % grid[1];
-        location = [locationX, locationY]
+        self.location = [
+            (self.location[0] + self.grid[0]) % self.grid[0],
+            (self.location[1] + self.grid[1]) % self.grid[1]
+        ]
     }
 
     function move(command) {
         var xIncrease = 0, yIncrease = 0;
-        if (direction === 0) { // North
+        if (self.direction === 'N') {
             yIncrease = -1;
-        } else if (direction === 1) { // East
+        } else if (self.direction === 'E') { // East
             xIncrease = 1;
-        } else if (direction === 2) { // South
+        } else if (self.direction === 'S') { // South
             yIncrease = 1;
-        } else if (direction === 3) { // West
+        } else if (self.direction === 'W') { // West
             xIncrease = -1;
         }
         if (command === 'b') { // Backward
             xIncrease *= -1;
             yIncrease *= -1;
         }
-        location[0] += xIncrease;
-        location[1] += yIncrease;
+        self.location[0] += xIncrease;
+        self.location[1] += yIncrease;
     }
 
     function turn(command) {
+        var directionNumber = directionAsNumber(self.direction);
         if (command === 'l') { // Left
-            direction = (direction + 4 - 1) % 4;
+            directionNumber = (directionNumber + 4 - 1) % 4;
         } else { // Right
-            direction = (direction + 1) % 4;
+            directionNumber = (directionNumber + 1) % 4;
         }
+        self.direction = self.directions[directionNumber];
     }
 
+    this.directions = ['N', 'E', 'S', 'W'];
+
     function directionAsNumber(direction) {
-        switch(direction) {
-            case 'N': return 0;
-            case 'E': return 1;
-            case 'S': return 2;
-            case 'W': return 3;
+        for(var index = 0; index < 4; index++) {
+            if (self.directions[index] === direction) return index;
         }
     }
 
