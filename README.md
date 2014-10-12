@@ -1,6 +1,8 @@
 Mars Rover kata
 ===============
 
+This repo contains the code written for the article (JavaScript Tutorial Through Katas: Mars Rover)[http://technologyconversations.com/2014/10/07/javascript-tutorial-through-katas-mars-rover/].
+
 Prerequisites
 -------------
 
