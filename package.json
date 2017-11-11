@@ -6,7 +6,6 @@
   "repository": "https://github.com/vfarcic/mars-rover-kata",
   "license": "Apache License 2",
   "scripts": {
-    "pretest": "npm install",
     "test": "grunt jasmine"
   },
   "devDependencies": {
